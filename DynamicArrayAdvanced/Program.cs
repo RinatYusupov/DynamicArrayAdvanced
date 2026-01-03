@@ -10,7 +10,9 @@ namespace DynamicArrayAdvanced
         {
             string userInput = string.Empty;
             List<int> numbers = new List<int>();
-            bool isWork = userInput != "exit";
+            string sum = "sum";
+            string exit = "exit";
+            bool isWork = userInput != exit;
 
             while (isWork)
             {
@@ -21,14 +23,17 @@ namespace DynamicArrayAdvanced
                 bool isNumber = int.TryParse(userInput, out int number);
 
                 if (isNumber)
-                    numbers = Add(numbers, number);
-
-                else if (userInput == "sum")
+                {
+                    Add(numbers, number);
+                }
+                else if (userInput == sum)
+                {
                     Sum(numbers);
-
-                else if (userInput == "exit")
+                }
+                else if (userInput == exit)
+                {
                     isWork = false;
-
+                }
                 else
                 {
                     Console.Clear();
@@ -41,10 +46,9 @@ namespace DynamicArrayAdvanced
             }
         }
 
-        public static List<int> Add(List<int> numbers, int number)
+        public static void Add(List<int> numbers, int number)
         {
             numbers.Add(number);
-            return numbers;
         }
 
         public static void Sum(List<int> numbers)
